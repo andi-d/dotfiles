@@ -5,6 +5,7 @@ endif
 " Plugins
 call plug#begin()
 Plug 'scrooloose/nerdtree'
+Plug 'vim-airline/vim-airline'
 call plug#end()
 
 " General settings
@@ -14,6 +15,8 @@ set history=700
 filetype plugin on
 filetype indent on
 
+let mapleader=","
+let g:mapleader=","
 
 " auto read when file is changed from outside
 set autoread
@@ -22,12 +25,25 @@ nmap <leader>w :w!<CR> " fast saving
 
 set so=7 "set 7 lines gap to the edge when moving verticaly
 
-colorscheme badwolf
-set background=dark
+"colorscheme badwolf
+"set background=dark
 
-if has('gui_running')
+" Set extra options when running in GUI mode
+if has("gui_running")
+  set guioptions-=T
+  set guioptions+=e
+  set t_Co=256
+  set guitablabel=%M\ %t
   set guifont=Consolas:h11
+  colorscheme badwolf
+else
+  set term=xterm
+  set t_Co=256
+  let &t_AB="\e[48;5;%dm"
+  let &t_AF="\e[38;5;%dm"
+  colorscheme badwolf
 endif
+
 
 set tabstop=4 " number of visual spaces per TAB
 set softtabstop=4 " number of spaces in tab when editing
@@ -54,9 +70,6 @@ set ignorecase " caseinsensitive search
 set smartcase " when searching try to be smart about cases
 nnoremap <leader><space> :nohlsearch<CR> " turn of search highlighting
 
-let mapleader=","
-let g:mapleader=","
-
 set backspace=indent,eol,start " enable backspace in insert mode
 
 " move vertically by visual line
@@ -71,14 +84,6 @@ set noswapfile " disable swapfiles
 " set backup " enable backup
 set nobackup " disable backup
 " set backupdir=~/.vim/tmp/backup/ " backup files
-
-" Set extra options when running in GUI mode
-if has("gui_running")
-    set guioptions-=T
-    set guioptions+=e
-    set t_Co=256
-    set guitablabel=%M\ %t
-endif
-
+"
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
