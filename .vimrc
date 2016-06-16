@@ -2,8 +2,8 @@ if has('win32') || has('win64')
     set runtimepath=%HOME%/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,path/to/home.vim/after
 endif
 
-call plug#begin()
 " Plugins
+call plug#begin()
 Plug 'scrooloose/nerdtree'
 call plug#end()
 
@@ -38,7 +38,7 @@ set showcmd " show command in bottom bar
 set showmode " show current mode
 set hidden " background buffers without writing them to disk
 
-set cursorline " highlight current line
+"set cursorline " highlight current line
 
 filetype indent on " load filetype-specific indent files
 
@@ -63,16 +63,14 @@ set backspace=indent,eol,start " enable backspace in insert mode
 nnoremap j gj
 nnoremap k gk
 
-" Backups
-if has("win32")
-  set backupdir=~/.vim/tmp/backup/ " backups 
-  set directory=~/.vim/tmp/swap/ " swap files 
-else 
-  set backupdir=~/.vim/tmp/backup/ " backups 
-  set directory=~/.vim/tmp/swap/ " swap files 
-endif
+" Backups and Swapfiles
+" set swapfile " enbale swapfile
+set noswapfile " disable swapfiles
+" set directory=~/.vim/tmp/swap/ " swap files 
 
-set backup " enable backup
+" set backup " enable backup
+set nobackup " disable backup
+" set backupdir=~/.vim/tmp/backup/ " backup files
 
 " Set extra options when running in GUI mode
 if has("gui_running")
