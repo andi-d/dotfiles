@@ -63,10 +63,10 @@ set backspace=indent,eol,start " enable backspace in insert mode
 nnoremap j gj
 nnoremap k gk
 
- " Backups
+" Backups
 if has("win32")
-  set backupdir=~/vimfiles/tmp/backup/ " backups 
-  set directory=~/vimfiles/tmp/swap/ " swap files 
+  set backupdir=~/.vim/tmp/backup/ " backups 
+  set directory=~/.vim/tmp/swap/ " swap files 
 else 
   set backupdir=~/.vim/tmp/backup/ " backups 
   set directory=~/.vim/tmp/swap/ " swap files 
