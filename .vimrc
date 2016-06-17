@@ -87,3 +87,6 @@ set nobackup " disable backup
 "
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
+
+set laststatus=2 " enable airline status bar
+
