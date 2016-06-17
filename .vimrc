@@ -34,7 +34,7 @@ if has("gui_running")
   set guioptions+=e
   set t_Co=256
   set guitablabel=%M\ %t
-  set guifont=Consolas:h11
+  set guifont=Inconsolata:h11
   colorscheme badwolf
 else
   set term=xterm
