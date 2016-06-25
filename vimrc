@@ -20,6 +20,8 @@ Plug 'tpope/vim-endwise'
 Plug 'Raimondi/delimitMate'
 Plug 'xsbeats/vim-blade'
 Plug 'jeetsukumaran/vim-buffergator'
+Plug 'scrooloose/syntastic'
+Plug 'alvan/vim-closetag'
 Plug 'Shougo/neocomplete.vim'
 call plug#end()
 
@@ -59,7 +61,7 @@ set softtabstop=4 " number of spaces in tab when editing
 set expandtab " insert spaces for tabs
 set relativenumber
 set number " show linenumbers
-set textwidth=100
+" set textwidth=100
 set visualbell " Use visual bell instead of beeping
 set showcmd " show command in bottom bar
 set showmode " show current mode
@@ -91,9 +93,24 @@ set backspace=indent,eol,start " enable backspace in insert mode
 set encoding=utf8 " Set utf8 as standard encoding and en_US as the standard language
 set laststatus=2 " enable airline status bar
 
+" Syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " HTML Editing
-set matchpairs+=<:>
+"set matchpairs+=<:>
+" filenames like *.xml, *.html, *.xhtml, ...
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.blade.php"
+
+let delimitMate_matchpairs = "(:),[:],{:}"
+
+let g:user_emmet_expandabbr_key = '<Tab>'
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
@@ -136,8 +153,10 @@ inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 
-nmap <leader>w :w!<CR> " fast saving
-nnoremap <leader><space> :nohlsearch<CR> " turn of search highlighting
+" fast saving
+nmap <leader>w :w!<CR>
+" turn of search highlighting
+nnoremap <leader><space> :nohlsearch<CR>
 
 " move vertically by visual line
 nnoremap j gj
@@ -172,9 +191,14 @@ vnoremap <tab> %
 nnoremap <C-e> 3<C-e>
 nnoremap <C-z> 3<C-y>
 
+" horizontal split size increase
+nnoremap <C-w>+ 5<C-w>+
+nnoremap <C-w>- 5<C-w>-
+
 
 """ SYSTEM CLIPBOARD COPY & PASTE SUPPORT
-set pastetoggle=<F2> "F2 before pasting to preserve indentation
+"F2 before pasting to preserve indentation
+set pastetoggle=<F2>
 "Copy paste to/from clipboard
 vnoremap <C-c> "*y
 map <silent><Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>"
