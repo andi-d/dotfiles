@@ -23,6 +23,7 @@ Plug 'jeetsukumaran/vim-buffergator'
 Plug 'scrooloose/syntastic'
 Plug 'alvan/vim-closetag'
 Plug 'Shougo/neocomplete.vim'
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 " General settings
@@ -71,6 +72,7 @@ set scrolloff=7 "set 7 lines gap to the edge when moving verticaly
 set gdefault " :s// substitutes in whole line
 set synmaxcol=1000 " disable syntax highlighting on long lines
 set autoindent
+set updatetime=250
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled = 1
 
