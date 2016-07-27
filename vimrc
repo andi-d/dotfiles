@@ -32,8 +32,8 @@ set history=700
 filetype plugin on
 filetype indent on
 
-let mapleader=","
-let g:mapleader=","
+let mapleader="\<Space>"
+let g:mapleader="\<Space>"
 
 " Set extra options when running in GUI mode
 if has("gui_running")
