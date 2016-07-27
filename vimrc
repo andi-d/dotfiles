@@ -24,6 +24,11 @@ Plug 'scrooloose/syntastic'
 Plug 'alvan/vim-closetag'
 Plug 'Shougo/neocomplete.vim'
 Plug 'airblade/vim-gitgutter'
+Plug 'terryma/vim-expand-region'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-surround'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 call plug#end()
 
 " General settings
@@ -54,7 +59,7 @@ else
     set background=dark
 endif
 
-set guifont=Source\ Code\ Pro\ Medium:h11
+set guifont=Source\ Code\ Pro\ Medium:h10
 
 set tabstop=4 " number of visual spaces per TAB
 set shiftwidth=4
@@ -178,16 +183,27 @@ nnoremap <leader>s <C-w>s
 " close pane
 nnoremap <leader>q <C-w>q
 
-nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <leader>m :NERDTreeToggle<CR>
-nnoremap <leader>n :NERDTreeFind<CR>
+nnoremap <silent> <C-t> :NERDTreeToggle<CR>
+nnoremap <silent> <leader>m :NERDTreeToggle<CR>
+nnoremap <silent> <leader>n :NERDTreeFind<CR>
 
-nnoremap <C-Tab> :bn<CR>
-nnoremap <C-S-Tab> :bp<CR>
+nnoremap <silent> <C-Tab> :bn<CR>
+nnoremap <silent> <C-S-Tab> :bp<CR>
 
 " Use tab to jump between blocks, because it's easier
-nnoremap <tab> %
-vnoremap <tab> %
+"nnoremap <tab> %
+"vnoremap <tab> %
+
+" copy and paste to system clipboard
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 
 " faster scrolling
 nnoremap <C-e> 3<C-e>
