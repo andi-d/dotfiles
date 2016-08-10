@@ -136,10 +136,12 @@ let g:html_indent_tags = 'li\|p'
 set listchars=tab:>-,trail:·,eol:$
 nmap <silent> <leader>s :set nolist!<CR>
 
+nnoremap <silent> <leader>d :bp<bar>bd #<CR>
+
 " Backups and Swapfiles
 " set swapfile " enbale swapfile
 set noswapfile " disable swapfiles
-" set directory=~/.vim/tmp/swap/ " swap files 
+" set directory=~/.vim/tmp/swap/ " swap files
 
 " set backup " enable backup
 set nobackup " disable backup
