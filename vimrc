@@ -29,6 +29,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'mustache/vim-mustache-handlebars'
 call plug#end()
 
 " General settings
