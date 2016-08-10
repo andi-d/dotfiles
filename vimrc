@@ -30,6 +30,7 @@ Plug 'tpope/vim-surround'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'mustache/vim-mustache-handlebars'
+Plug 'sjl/badwolf'
 call plug#end()
 
 " General settings
@@ -45,22 +46,23 @@ let g:mapleader="\<Space>"
 if has("gui_running")
     set guioptions-=T
     set guioptions+=e
-    set t_Co=256
     set guitablabel=%M\ %t
-    " set guifont=Inconsolata:h10
-    colorscheme badwolf
-    set background=dark
+    if (has('win32'))
+        set guifont=Source\ Code\ Pro\ Medium:h10
+    else
+        " higher dpi on mac
+        set guifont=Source\ Code\ Pro\ Medium:h12
+    endif
     set lines=999 columns=999
 else
-    set term=xterm
     set t_Co=256
+    set term=xterm-256color
     let &t_AB="\e[48;5;%dm"
     let &t_AF="\e[38;5;%dm"
-    colorscheme badwolf
-    set background=dark
 endif
 
-set guifont=Source\ Code\ Pro\ Medium:h10
+set background=dark
+colorscheme badwolf
 
 set tabstop=4 " number of visual spaces per TAB
 set shiftwidth=4
@@ -98,7 +100,9 @@ set hlsearch " highlight matches
 set ignorecase " caseinsensitive search
 set smartcase " when searching try to be smart about cases
 set backspace=indent,eol,start " enable backspace in insert mode
-set encoding=utf8 " Set utf8 as standard encoding and en_US as the standard language
+set encoding=utf-8 " Set utf8 as standard encoding and en_US as the standard language
+set termencoding=utf-8
+set fileencoding=utf-8
 set laststatus=2 " enable airline status bar
 
 " Syntastic settings
