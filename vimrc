@@ -14,9 +14,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'bling/vim-bufferline'
 Plug 'mattn/emmet-vim'
-Plug 'tpope/vim-endwise'
 Plug 'Raimondi/delimitMate' " automatically inserts closing pairs (quoutes, braces, etc...)
 Plug 'xsbeats/vim-blade' " blade syntax support
 Plug 'jeetsukumaran/vim-buffergator' " <leader>b opens a buffer list
@@ -70,7 +68,7 @@ set softtabstop=4 " number of spaces in tab when editing
 set expandtab " insert spaces for tabs
 set relativenumber
 set number " show linenumbers
-" set textwidth=100
+set textwidth=1000
 set visualbell " Use visual bell instead of beeping
 set showcmd " show command in bottom bar
 set showmode " show current mode
@@ -141,7 +139,10 @@ highlight link SyntasticStyleWarningSign SignColumn
 " filenames like *.xml, *.html, *.xhtml, ...
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.blade.php"
 
-let delimitMate_matchpairs = "(:),[:],{:}"
+let delimitMate_balance_matchpairs = 1
+let delimitMate_expand_cr = 1
+let delimitMate_expand_space = 1
+let delimitMate_jump_expansion = 1
 
 let g:user_emmet_expandabbr_key = '<Tab>'
 
@@ -152,6 +153,7 @@ let g:html_indent_tags = 'li\|p'
 set listchars=tab:>-,trail:·,eol:$
 nmap <silent> <leader>s :set nolist!<CR>
 
+" close buffer without closing split
 nnoremap <silent> <leader>d :bp<bar>bd #<CR>
 
 " Backups and Swapfiles
@@ -281,7 +283,8 @@ inoremap <expr><C-l>     neocomplete#complete_common_string()
 
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+imap <expr> <CR> pumvisible() ? "\<C-r>=<SID>".my_cr_function()."\<CR>" : "<Plug>delimitMateCR"
+
 function! s:my_cr_function()
   return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
   " For no inserting <CR> key.
@@ -291,7 +294,8 @@ endfunction
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+" inoremap <expr><BS> neocomplete#smart_close_popup()."\<BS>"
+inoremap <expr><BS>  pumvisible() ? neocomplete#smart_close_popup()."\<BS>" : delimitMate#BS()
 " Close popup by <Space>.
 "inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
 
