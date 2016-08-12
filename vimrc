@@ -29,6 +29,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'majutsushi/tagbar'
+Plug 'mileszs/ack.vim'
 Plug 'sjl/badwolf' " colorscheme
 call plug#end()
 
@@ -134,6 +135,17 @@ highlight link SyntasticErrorSign SignColumn
 highlight link SyntasticWarningSign SignColumn
 highlight link SyntasticStyleErrorSign SignColumn
 highlight link SyntasticStyleWarningSign SignColumn
+
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep --smart-case'
+    cnoreabbrev ag Ack
+    cnoreabbrev aG Ack
+    cnoreabbrev Ag Ack
+    cnoreabbrev AG Ack
+endif
+
+"cnoreabbrev Ack Ack!
+nnoremap <Leader>a :Ack<Space>
 
 " HTML Editing
 "set matchpairs+=<:>
