@@ -17,7 +17,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'mattn/emmet-vim'
 Plug 'Raimondi/delimitMate' " automatically inserts closing pairs (quoutes, braces, etc...)
 Plug 'xsbeats/vim-blade' " blade syntax support
-Plug 'jeetsukumaran/vim-buffergator' " <leader>b opens a buffer list
+" Plug 'jeetsukumaran/vim-buffergator' " <leader>b opens a buffer list
 Plug 'scrooloose/syntastic' " eslint support
 Plug 'alvan/vim-closetag' " closes html tags automatically
 Plug 'Shougo/neocomplete.vim'
@@ -28,6 +28,7 @@ Plug 'tpope/vim-surround'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'mustache/vim-mustache-handlebars'
+Plug 'majutsushi/tagbar'
 Plug 'sjl/badwolf' " colorscheme
 call plug#end()
 
@@ -194,6 +195,9 @@ inoremap <right> <nop>
 nmap <leader>w :w!<CR>
 " turn of search highlighting
 nnoremap <leader><space> :nohlsearch<CR>
+
+" tagbar
+nnoremap <silent><Leader>t :TagbarToggle<CR>
 
 " move vertically by visual line
 nnoremap j gj
