@@ -149,10 +149,11 @@ let g:user_emmet_expandabbr_key = '<Tab>'
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
-
 " show trailing whitespace
-set listchars=tab:>-,trail:·,eol:$
-nmap <silent> <leader>s :set nolist!<CR>
+"set list
+"set listchars=tab:>-,trail:·
+set list listchars=tab:»·,trail:·,nbsp:·
+" nmap <silent> <leader>s :set nolist!<CR>
 
 " close buffer without closing split
 nnoremap <silent> <leader>d :bp<bar>bd #<CR>
