@@ -53,6 +53,7 @@ if has("gui_running")
         " higher dpi on mac
         set guifont=Source\ Code\ Pro\ Medium:h12
     endif
+    let g:airline_powerline_fonts=1
     set lines=999 columns=999
 else
     set t_Co=256
@@ -81,7 +82,6 @@ set gdefault " :s// substitutes in whole line
 set synmaxcol=1000 " disable syntax highlighting on long lines
 set autoindent
 set updatetime=250
-let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled = 1
 
 "Allow usage of mouse in iTerm
