@@ -101,11 +101,46 @@ set encoding=utf-8 " Set utf8 as standard encoding and en_US as the standard lan
 set termencoding=utf-8
 set fileencoding=utf-8
 set laststatus=2 " enable airline status bar
+set list listchars=tab:»·,trail:·,nbsp:· " show trailing whitespace
+
+" Backups and Swapfiles
+" set swapfile " enbale swapfile
+set noswapfile " disable swapfiles
+" set directory=~/.vim/tmp/swap/ " swap files
+
+" set backup " enable backup
+set nobackup " disable backup
+" set backupdir=~/.vim/tmp/backup/ " backup files
+
+"Toggle relative numbering, and set to absolute on loss of focus or insert mode
+set rnu
+function! ToggleNumbersOn()
+    set nu!
+    set rnu
+endfunction
+function! ToggleRelativeOn()
+    set rnu!
+    set nu
+endfunction
+autocmd FocusLost * call ToggleRelativeOn()
+autocmd FocusGained * call ToggleRelativeOn()
+autocmd InsertEnter * call ToggleRelativeOn()
+autocmd InsertLeave * call ToggleRelativeOn()
+
+""""""""""""""""""""""
+" Plugin Configuration
+""""""""""""""""""""""
 
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
+  " cnoreabbrev ag Ack
+  " cnoreabbrev aG Ack
+  " cnoreabbrev Ag Ack
+  " cnoreabbrev AG Ack
+
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
+  let g:ackprg = 'ag --vimgrep --smart-case'
 
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag -l --nocolor --hidden -g "" %s'
@@ -133,17 +168,6 @@ highlight link SyntasticWarningSign SignColumn
 highlight link SyntasticStyleErrorSign SignColumn
 highlight link SyntasticStyleWarningSign SignColumn
 
-if executable('ag')
-    let g:ackprg = 'ag --vimgrep --smart-case'
-    cnoreabbrev ag Ack
-    cnoreabbrev aG Ack
-    cnoreabbrev Ag Ack
-    cnoreabbrev AG Ack
-endif
-
-"cnoreabbrev Ack Ack!
-nnoremap <Leader>a :Ack<Space>
-
 " HTML Editing
 "set matchpairs+=<:>
 " filenames like *.xml, *.html, *.xhtml, ...
@@ -158,40 +182,10 @@ let g:user_emmet_expandabbr_key = '<Tab>'
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
-" show trailing whitespace
-"set list
-"set listchars=tab:>-,trail:·
-set list listchars=tab:»·,trail:·,nbsp:·
-" nmap <silent> <leader>s :set nolist!<CR>
 
-" close buffer without closing split
-nnoremap <silent> <leader>d :bp<bar>bd #<CR>
-
-" Backups and Swapfiles
-" set swapfile " enbale swapfile
-set noswapfile " disable swapfiles
-" set directory=~/.vim/tmp/swap/ " swap files
-
-" set backup " enable backup
-set nobackup " disable backup
-" set backupdir=~/.vim/tmp/backup/ " backup files
-
-"Toggle relative numbering, and set to absolute on loss of focus or insert mode
-set rnu
-function! ToggleNumbersOn()
-    set nu!
-    set rnu
-endfunction
-function! ToggleRelativeOn()
-    set rnu!
-    set nu
-endfunction
-autocmd FocusLost * call ToggleRelativeOn()
-autocmd FocusGained * call ToggleRelativeOn()
-autocmd InsertEnter * call ToggleRelativeOn()
-autocmd InsertLeave * call ToggleRelativeOn()
-
+""""""""""""""""""""""
 " Keybindings
+""""""""""""""""""""""
 nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
@@ -208,6 +202,12 @@ nnoremap <leader><space> :nohlsearch<CR>
 
 " tagbar
 nnoremap <silent><Leader>t :TagbarToggle<CR>
+
+" close buffer without closing split
+nnoremap <silent> <leader>d :bp<bar>bd #<CR>
+
+"cnoreabbrev Ack Ack!
+nnoremap <Leader>a :Ack<Space>
 
 " move vertically by visual line
 nnoremap j gj
@@ -266,7 +266,10 @@ vnoremap <C-c> "*y
 map <silent><Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>"
 map <silent><Leader><S-p> :set paste<CR>O<esc>"*]p:set nopaste<cr>"
 
+"""""""""""""""""""""""""""
 " neocomplete configuration
+"""""""""""""""""""""""""""
+
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
