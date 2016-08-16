@@ -16,20 +16,17 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'mattn/emmet-vim'
 Plug 'Raimondi/delimitMate' " automatically inserts closing pairs (quoutes, braces, etc...)
-Plug 'xsbeats/vim-blade' " blade syntax support
-" Plug 'jeetsukumaran/vim-buffergator' " <leader>b opens a buffer list
 Plug 'scrooloose/syntastic' " eslint support
 Plug 'alvan/vim-closetag' " closes html tags automatically
 Plug 'Shougo/neocomplete.vim'
 Plug 'airblade/vim-gitgutter' " left gutter shows modified/added/deleted indicators
-Plug 'terryma/vim-expand-region'
+Plug 'terryma/vim-expand-region' " push v multiple times to expand block selection
 Plug 'tpope/vim-sleuth' " automatically adjusts shiftwidth and expandtab
 Plug 'tpope/vim-surround'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'mustache/vim-mustache-handlebars'
+Plug 'sheerun/vim-polyglot'
 Plug 'majutsushi/tagbar'
 Plug 'mileszs/ack.vim'
+Plug 'skammer/vim-css-color'
 Plug 'sjl/badwolf' " colorscheme
 call plug#end()
 
