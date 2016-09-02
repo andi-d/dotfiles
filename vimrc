@@ -61,13 +61,15 @@ if has("gui_running")
     let g:airline_powerline_fonts=1
     set lines=999 columns=999
 else
-    set t_Co=256
-    set term=xterm-256color
-    let &t_AB="\e[48;5;%dm"
-    let &t_AF="\e[38;5;%dm"
+    let &t_Co=256
+    "set term=xterm
+    if has('win32')
+      let &t_AB="\e[48;5;%dm"
+      let &t_AF="\e[38;5;%dm"
+    endif
 endif
 
-set background=dark
+"set background=dark
 colorscheme badwolf
 
 set tabstop=4 " number of visual spaces per TAB
@@ -351,3 +353,4 @@ endif
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+
