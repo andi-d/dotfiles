@@ -67,7 +67,8 @@ if has("gui_running")
         "set guifont=Andale_Mono_for_Powerline:h10:cANSI
     else
         " higher dpi on mac
-        set guifont=Source\ Code\ Pro\ Medium:h12
+        "set guifont=Source\ Code\ Pro\ Medium:h12
+        set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete:h12
     endif
     let g:airline_powerline_fonts=1
     set lines=999 columns=999
