@@ -55,8 +55,16 @@ if has("gui_running")
     set guioptions-=T
     set guioptions+=e
     set guitablabel=%M\ %t
+    " https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/
     if (has('win32'))
-        set guifont=Source\ Code\ Pro\ Medium:h10
+        "set guifont=DroidSansMonoForPowerline_NF:h10:cANSI
+        "set guifont=Ubuntu_Mono_derivative_Powerlin:h10:cANSI:qNONANTIALIASED
+        "set guifont=Source\ Code\ Pro\ Medium:h10:cANSI
+        "set guifont=Inconsolata-g_for_Powerline:h10:cANSI
+        set guifont=DejaVuSansMonoForPowerline_NF:h10
+
+        "https://github.com/gzentkovich/dotfiles-powerline-font
+        "set guifont=Andale_Mono_for_Powerline:h10:cANSI
     else
         " higher dpi on mac
         set guifont=Source\ Code\ Pro\ Medium:h12
@@ -87,7 +95,7 @@ set showcmd " show command in bottom bar
 set showmode " show current mode
 set hidden " background buffers without writing them to disk
 set autoread " auto read when file is changed from outside
-set scrolloff=7 "set 7 lines gap to the edge when moving verticaly
+set scrolloff=5 "set 7 lines gap to the edge when moving verticaly
 set gdefault " :s// substitutes in whole line
 set synmaxcol=1000 " disable syntax highlighting on long lines
 set autoindent
@@ -112,7 +120,7 @@ set smartcase " when searching try to be smart about cases
 set backspace=indent,eol,start " enable backspace in insert mode
 set encoding=utf-8 " Set utf8 as standard encoding and en_US as the standard language
 set termencoding=utf-8
-set fileencoding=utf-8
+"set fileencoding=utf-8
 set laststatus=2 " enable airline status bar
 set list listchars=tab:»·,trail:·,nbsp:· " show trailing whitespace
 
@@ -184,14 +192,15 @@ highlight link SyntasticStyleWarningSign SignColumn
 " HTML Editing
 "set matchpairs+=<:>
 " filenames like *.xml, *.html, *.xhtml, ...
-let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.blade.php"
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.blade.php,*.php"
 
 let delimitMate_balance_matchpairs = 1
 let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 1
 let delimitMate_jump_expansion = 1
 
-let g:user_emmet_expandabbr_key = '<Tab>'
+"let g:user_emmet_expandabbr_key = '<Tab>'
+"let g:user_emmet_leader_key='<C-Z>'
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
@@ -241,7 +250,6 @@ nnoremap <leader>s <C-w>s
 nnoremap <leader>q <C-w>q
 
 nnoremap <silent> <C-t> :NERDTreeToggle<CR>
-nnoremap <silent> <leader>m :NERDTreeToggle<CR>
 nnoremap <silent> <leader>n :NERDTreeFind<CR>
 
 nnoremap <silent> <C-Tab> :bn<CR>
