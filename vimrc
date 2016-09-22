@@ -15,26 +15,29 @@ endif
 
 " Plugins
 call plug#begin()
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } | Plug 'Xuyuanp/nerdtree-git-plugin' " file drawer
+Plug 'scrooloose/syntastic' " eslint support
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'mattn/emmet-vim'
-Plug 'Raimondi/delimitMate' " automatically inserts closing pairs (quoutes, braces, etc...)
-Plug 'scrooloose/syntastic' " eslint support
-Plug 'alvan/vim-closetag' " closes html tags automatically
-Plug 'Shougo/neocomplete.vim'
+Plug 'ctrlpvim/ctrlp.vim' "file finder
+"Plug 'Raimondi/delimitMate' " automatically inserts closing pairs (quoutes, braces, etc...)
+Plug 'jiangmiao/auto-pairs' " automatically inserts closing pairs (quoutes, braces, etc...)
+"Plug 'alvan/vim-closetag' " closes html tags automatically
+Plug 'tpope/vim-ragtag' " closes html tags automatically
 "Plug 'Shougo/neocomplete.vim'
 Plug 'airblade/vim-gitgutter' " left gutter shows modified/added/deleted indicators
 Plug 'terryma/vim-expand-region' " push v multiple times to expand block selection
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth' " automatically adjusts shiftwidth and expandtab
 Plug 'tpope/vim-surround'
-Plug 'sheerun/vim-polyglot'
+Plug 'sickill/vim-pasta' "pasting with the right indentation
+Plug 'sheerun/vim-polyglot' "collection of language packs
 Plug 'majutsushi/tagbar'
 Plug 'mileszs/ack.vim'
-Plug 'skammer/vim-css-color'
+Plug 'ap/vim-css-color'
+Plug 'gregsexton/MatchTag' "highlights matching html tags
+Plug 'mattn/emmet-vim'
+"Plug 'ryanoasis/vim-devicons'
 Plug 'sjl/badwolf' " colorscheme
 call plug#end()
 
