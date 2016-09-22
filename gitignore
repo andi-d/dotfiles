@@ -2,7 +2,6 @@
 .idea
 
 # Vim
-~/.vim/plugged
 *.swp
 *.swo
 
