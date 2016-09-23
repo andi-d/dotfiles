@@ -1,5 +1,15 @@
 " Type :so % to refresh .vimrc after making changes
-if has('win32') || has('win64')
+silent function! OSX()
+    return has('macunix')
+endfunction
+silent function! LINUX()
+    return has('unix') && !has('macunix') && !has('win32unix')
+endfunction
+silent function! WINDOWS()
+    return  (has('win32') || has('win64'))
+endfunction
+
+if WINDOWS()
     set runtimepath=%HOME%/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,path/to/home.vim/after
 endif
 
@@ -157,23 +167,34 @@ autocmd InsertLeave * call ToggleRelativeOn()
 " Plugin Configuration
 """"""""""""""""""""""
 
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+  \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
+
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
-  " cnoreabbrev ag Ack
-  " cnoreabbrev aG Ack
-  " cnoreabbrev Ag Ack
-  " cnoreabbrev AG Ack
-
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
-  let g:ackprg = 'ag --vimgrep --smart-case'
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag -l --nocolor --hidden -g "" %s'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
+  let s:ctrlp_fallback = 'ag %s --nocolor -l -g ""'
+elseif executable('ack-grep')
+  let s:ctrlp_fallback = 'ack-grep %s --nocolor -f'
+elseif executable('ack')
+  let s:ctrlp_fallback = 'ack %s --nocolor -f'
+" On Windows use "dir" as fallback command.
+elseif WINDOWS()
+  let s:ctrlp_fallback = 'dir %s /-n /b /s /a-d'
+else
+  let s:ctrlp_fallback = 'find %s -type f'
 endif
+if exists("g:ctrlp_user_command")
+  unlet g:ctrlp_user_command
+endif
+let g:ctrlp_user_command = {
+  \ 'types': {
+    \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
+    \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+  \ },
+  \ 'fallback': s:ctrlp_fallback
+\ }
 
 " Syntastic settings
 set statusline+=%#warningmsg#
