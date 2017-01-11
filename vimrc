@@ -1,16 +1,16 @@
 " Type :so % to refresh .vimrc after making changes
 silent function! OSX()
-    return has('macunix')
+  return has('macunix')
 endfunction
 silent function! LINUX()
-    return has('unix') && !has('macunix') && !has('win32unix')
+  return has('unix') && !has('macunix') && !has('win32unix')
 endfunction
 silent function! WINDOWS()
-    return  (has('win32') || has('win64'))
+  return  (has('win32') || has('win64'))
 endfunction
 
 if WINDOWS()
-    set runtimepath=%HOME%/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,path/to/home.vim/after
+  set runtimepath=%HOME%/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,path/to/home.vim/after
 endif
 
 " as early as possible, has sideeffects
@@ -18,8 +18,8 @@ set nocompatible
 
 " Setting up vim-plug as the package manager
 if empty(glob('~/.vim/autoload/plug.vim'))
-  execute "silent !curl -fLo " . expand("~/.vim/autoload/plug.vim") . 
-    \" --create-dirs --insecure https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+  execute "silent !curl -fLo " . expand("~/.vim/autoload/plug.vim") .
+        \" --create-dirs --insecure https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
   autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
@@ -33,11 +33,13 @@ Plug 'ctrlpvim/ctrlp.vim' "file finder
 "Plug 'Raimondi/delimitMate' " automatically inserts closing pairs (quoutes, braces, etc...)
 Plug 'jiangmiao/auto-pairs' " automatically inserts closing pairs (quoutes, braces, etc...)
 "Plug 'alvan/vim-closetag' " closes html tags automatically
-Plug 'tpope/vim-ragtag' " closes html tags automatically
+"Plug 'tpope/vim-ragtag' " closes html tags automatically
 "Plug 'Shougo/neocomplete.vim'
-Plug 'Shougo/neocomplete.vim'
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
+Plug 'amirh/HTML-AutoCloseTag'
+"Plug 'Shougo/neocomplete.vim'
+"Plug 'Shougo/neosnippet'
+"Plug 'Shougo/neosnippet-snippets'
+Plug 'maralla/completor.vim'
 Plug 'honza/vim-snippets'
 Plug 'airblade/vim-gitgutter' " left gutter shows modified/added/deleted indicators
 Plug 'terryma/vim-expand-region' " push v multiple times to expand block selection
@@ -66,33 +68,33 @@ let g:mapleader="\<Space>"
 
 " Set extra options when running in GUI mode
 if has("gui_running")
-    set guioptions-=T
-    set guioptions+=e
-    set guitablabel=%M\ %t
-    " https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/
-    if (has('win32'))
-        "set guifont=DroidSansMonoForPowerline_NF:h10:cANSI
-        "set guifont=Ubuntu_Mono_derivative_Powerlin:h10:cANSI:qNONANTIALIASED
-        "set guifont=Source\ Code\ Pro\ Medium:h10:cANSI
-        "set guifont=Inconsolata-g_for_Powerline:h10:cANSI
-        set guifont=DejaVuSansMonoForPowerline_NF:h10
+  set guioptions-=T
+  set guioptions+=e
+  set guitablabel=%M\ %t
+  " https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/
+  if (has('win32'))
+    "set guifont=DroidSansMonoForPowerline_NF:h10:cANSI
+    "set guifont=Ubuntu_Mono_derivative_Powerlin:h10:cANSI:qNONANTIALIASED
+    "set guifont=Source\ Code\ Pro\ Medium:h10:cANSI
+    "set guifont=Inconsolata-g_for_Powerline:h10:cANSI
+    set guifont=DejaVuSansMonoForPowerline_NF:h10
 
-        "https://github.com/gzentkovich/dotfiles-powerline-font
-        "set guifont=Andale_Mono_for_Powerline:h10:cANSI
-    else
-        " higher dpi on mac
-        "set guifont=Source\ Code\ Pro\ Medium:h12
-        set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete:h12
-    endif
-    let g:airline_powerline_fonts=1
-    set lines=999 columns=999
+    "https://github.com/gzentkovich/dotfiles-powerline-font
+    "set guifont=Andale_Mono_for_Powerline:h10:cANSI
+  else
+    " higher dpi on mac
+    "set guifont=Source\ Code\ Pro\ Medium:h12
+    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete:h12
+  endif
+  let g:airline_powerline_fonts=1
+  set lines=999 columns=999
 else
-    let &t_Co=256
-    "set term=xterm
-    if has('win32')
-      let &t_AB="\e[48;5;%dm"
-      let &t_AF="\e[38;5;%dm"
-    endif
+  let &t_Co=256
+  "set term=xterm
+  if has('win32')
+    let &t_AB="\e[48;5;%dm"
+    let &t_AF="\e[38;5;%dm"
+  endif
 endif
 
 "set background=dark
@@ -151,12 +153,12 @@ set nobackup " disable backup
 "Toggle relative numbering, and set to absolute on loss of focus or insert mode
 set rnu
 function! ToggleNumbersOn()
-    set nu!
-    set rnu
+  set nu!
+  set rnu
 endfunction
 function! ToggleRelativeOn()
-    set rnu!
-    set nu
+  set rnu!
+  set nu
 endfunction
 autocmd FocusLost * call ToggleRelativeOn()
 autocmd FocusGained * call ToggleRelativeOn()
@@ -169,8 +171,8 @@ autocmd InsertLeave * call ToggleRelativeOn()
 
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.hg$\|\.svn$',
-  \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
+      \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+      \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
 
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
@@ -179,7 +181,7 @@ elseif executable('ack-grep')
   let s:ctrlp_fallback = 'ack-grep %s --nocolor -f'
 elseif executable('ack')
   let s:ctrlp_fallback = 'ack %s --nocolor -f'
-" On Windows use "dir" as fallback command.
+  " On Windows use "dir" as fallback command.
 elseif WINDOWS()
   let s:ctrlp_fallback = 'dir %s /-n /b /s /a-d'
 else
@@ -189,12 +191,12 @@ if exists("g:ctrlp_user_command")
   unlet g:ctrlp_user_command
 endif
 let g:ctrlp_user_command = {
-  \ 'types': {
-    \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
-    \ 2: ['.hg', 'hg --cwd %s locate -I .'],
-  \ },
-  \ 'fallback': s:ctrlp_fallback
-\ }
+      \ 'types': {
+      \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
+      \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+      \ },
+      \ 'fallback': s:ctrlp_fallback
+      \ }
 
 " Syntastic settings
 set statusline+=%#warningmsg#
@@ -314,195 +316,6 @@ nnoremap <C-w>- 5<C-w>-
 set pastetoggle=<F2>
 "Copy paste to/from clipboard
 vnoremap <C-c> "*y
-map <silent><Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>"
-map <silent><Leader><S-p> :set paste<CR>O<esc>"*]p:set nopaste<cr>"
+"map <silent><Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>"
+"map <silent><Leader><S-p> :set paste<CR>O<esc>"*]p:set nopaste<cr>"
 
-"""""""""""""""""""""""""""
-" neocomplete configuration
-"""""""""""""""""""""""""""
-
-""Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
-"" Disable AutoComplPop.
-"let g:acp_enableAtStartup = 0
-"" Use neocomplete.
-"let g:neocomplete#enable_at_startup = 1
-"" Use smartcase.
-"let g:neocomplete#enable_smart_case = 1
-"" Set minimum syntax keyword length.
-"let g:neocomplete#sources#syntax#min_keyword_length = 3
-"let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-"
-"" Define dictionary.
-"let g:neocomplete#sources#dictionary#dictionaries = {
-"    \ 'default' : '',
-"    \ 'vimshell' : $HOME.'/.vimshell_hist',
-"    \ 'scheme' : $HOME.'/.gosh_completions'
-"        \ }
-"
-"" Define keyword.
-"if !exists('g:neocomplete#keyword_patterns')
-"    let g:neocomplete#keyword_patterns = {}
-"endif
-"let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-"
-"" Plugin key-mappings.
-"inoremap <expr><C-g>     neocomplete#undo_completion()
-"inoremap <expr><C-l>     neocomplete#complete_common_string()
-"
-"" Recommended key-mappings.
-"" <CR>: close popup and save indent.
-"imap <expr> <CR> pumvisible() ? "\<C-r>=<SID>".my_cr_function()."\<CR>" : "<Plug>delimitMateCR"
-"
-"function! s:my_cr_function()
-"  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-"  " For no inserting <CR> key.
-"  "return pumvisible() ? "\<C-y>" : "\<CR>"
-"endfunction
-"" <TAB>: completion.
-"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-"" <C-h>, <BS>: close popup and delete backword char.
-"inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-"" inoremap <expr><BS> neocomplete#smart_close_popup()."\<BS>"
-"inoremap <expr><BS>  pumvisible() ? neocomplete#smart_close_popup()."\<BS>" : delimitMate#BS()
-"" Close popup by <Space>.
-""inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
-"
-"" AutoComplPop like behavior.
-""let g:neocomplete#enable_auto_select = 1
-"
-"" Shell like behavior(not recommended).
-""set completeopt+=longest
-""let g:neocomplete#enable_auto_select = 1
-""let g:neocomplete#disable_auto_complete = 1
-""inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
-"
-"" Enable omni completion.
-"autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-"autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-"autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-"
-"" Enable heavy omni completion.
-"if !exists('g:neocomplete#sources#omni#input_patterns')
-"  let g:neocomplete#sources#omni#input_patterns = {}
-"endif
-""let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-""let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-""let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-"
-"" For perlomni.vim setting.
-"" https://github.com/c9s/perlomni.vim
-"let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-
-let g:acp_enableAtStartup = 0
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#enable_auto_delimiter = 1
-let g:neocomplete#max_list = 15
-let g:neocomplete#force_overwrite_completefunc = 1
-
-
-" Define dictionary.
-let g:neocomplete#sources#dictionary#dictionaries = {
-			\ 'default' : '',
-			\ 'vimshell' : $HOME.'/.vimshell_hist',
-			\ 'scheme' : $HOME.'/.gosh_completions'
-			\ }
-
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-	let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-" Plugin key-mappings {
-	" These two lines conflict with the default digraph mapping of <C-K>
-	if !exists('g:spf13_no_neosnippet_expand')
-		imap <C-k> <Plug>(neosnippet_expand_or_jump)
-		smap <C-k> <Plug>(neosnippet_expand_or_jump)
-	endif
-	if exists('g:spf13_noninvasive_completion')
-		inoremap <CR> <CR>
-		" <ESC> takes you out of insert mode
-		inoremap <expr> <Esc>   pumvisible() ? "\<C-y>\<Esc>" : "\<Esc>"
-		" <CR> accepts first, then sends the <CR>
-		inoremap <expr> <CR>    pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
-		" <Down> and <Up> cycle like <Tab> and <S-Tab>
-		inoremap <expr> <Down>  pumvisible() ? "\<C-n>" : "\<Down>"
-		inoremap <expr> <Up>    pumvisible() ? "\<C-p>" : "\<Up>"
-		" Jump up and down the list
-		inoremap <expr> <C-d>   pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
-		inoremap <expr> <C-u>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
-	else
-		" <C-k> Complete Snippet
-		" <C-k> Jump to next snippet point
-		imap <silent><expr><C-k> neosnippet#expandable() ?
-					\ "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ?
-					\ "\<C-e>" : "\<Plug>(neosnippet_expand_or_jump)")
-		smap <TAB> <Right><Plug>(neosnippet_jump_or_expand)
-
-		inoremap <expr><C-g> neocomplete#undo_completion()
-		inoremap <expr><C-l> neocomplete#complete_common_string()
-		"inoremap <expr><CR> neocomplete#complete_common_string()
-
-		" <CR>: close popup
-		" <s-CR>: close popup and save indent.
-		inoremap <expr><s-CR> pumvisible() ? neocomplete#smart_close_popup()."\<CR>" : "\<CR>"
-
-		function! CleverCr()
-			if pumvisible()
-				if neosnippet#expandable()
-					let exp = "\<Plug>(neosnippet_expand)"
-					return exp . neocomplete#smart_close_popup()
-				else
-					return neocomplete#smart_close_popup()
-				endif
-			else
-				return "\<CR>"
-			endif
-		endfunction
-
-		" <CR> close popup and save indent or expand snippet
-		imap <expr> <CR> CleverCr()
-		" <C-h>, <BS>: close popup and delete backword char.
-		inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-		inoremap <expr><C-y> neocomplete#smart_close_popup()
-	endif
-	" <TAB>: completion.
-	inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-	inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
-
-	" Courtesy of Matteo Cavalleri
-
-	function! CleverTab()
-		if pumvisible()
-			return "\<C-n>"
-		endif
-		let substr = strpart(getline('.'), 0, col('.') - 1)
-		let substr = matchstr(substr, '[^ \t]*$')
-		if strlen(substr) == 0
-			" nothing to match on empty string
-			return "\<Tab>"
-		else
-			" existing text matching
-			if neosnippet#expandable_or_jumpable()
-				return "\<Plug>(neosnippet_expand_or_jump)"
-			else
-				return neocomplete#start_manual_complete()
-			endif
-		endif
-	endfunction
-
-	imap <expr> <Tab> CleverTab()
-" }
-
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-	let g:neocomplete#sources#omni#input_patterns = {}
-endif
-let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
