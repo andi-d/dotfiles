@@ -39,7 +39,8 @@ Plug 'amirh/HTML-AutoCloseTag'
 "Plug 'Shougo/neocomplete.vim'
 "Plug 'Shougo/neosnippet'
 "Plug 'Shougo/neosnippet-snippets'
-Plug 'maralla/completor.vim'
+"Plug 'maralla/completor.vim'
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'honza/vim-snippets'
 Plug 'airblade/vim-gitgutter' " left gutter shows modified/added/deleted indicators
 Plug 'terryma/vim-expand-region' " push v multiple times to expand block selection
@@ -90,7 +91,17 @@ if has("gui_running")
   set lines=999 columns=999
 else
   let &t_Co=256
-  "set term=xterm
+  set term=screen-256color
+  let &t_ti.="\e[1 q"
+  let &t_SI.="\e[5 q"
+  let &t_EI.="\e[1 q"
+  let &t_te.="\e[0 q"
+  if &term =~ '256color'
+    " disable Background Color Erase (BCE) so that color schemes
+    " render properly when inside 256-color tmux and GNU screen.
+    " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+    set t_ut=
+  endif
   if has('win32')
     let &t_AB="\e[48;5;%dm"
     let &t_AF="\e[38;5;%dm"
@@ -270,10 +281,10 @@ nnoremap / /\v
 vnoremap / /\v
 
 " easier pane navigation
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+"nnoremap <C-h> <C-w>h
+"nnoremap <C-j> <C-w>j
+"nnoremap <C-k> <C-w>k
+"nnoremap <C-l> <C-w>l
 
 " split window vertically / horizontally
 nnoremap <leader>v <C-w>v<C-w>l
