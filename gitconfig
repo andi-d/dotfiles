@@ -24,6 +24,7 @@
     last = log -1 --stat
 	leaderboard = shortlog -sn --all --no-merges
 	today = log --since=00:00:00 --all --no-merges --oneline --author=andreas.derksen2@gmail.com
+	mf = merge --no-ff --no-commit
     cp = cherry-pick
     co = checkout
     cl = clone
