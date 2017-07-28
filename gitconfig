@@ -22,6 +22,7 @@
     trustexitcode = false
 [alias]
     last = log -1 --stat
+	leaderboard = shortlog -sn --all --no-merges
     cp = cherry-pick
     co = checkout
     cl = clone
