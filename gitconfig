@@ -21,18 +21,18 @@
     prompt = false
     trustexitcode = false
 [alias]
-	today = log --since=00:00:00 --all --no-merges --oneline --author=andreas.derksen2@gmail.com
+    today = log --since=00:00:00 --all --no-merges --oneline --author=andreas.derksen2@gmail.com
     last = log -1 --stat
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative --all
-	lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
-	lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
-	leaderboard = shortlog -sn --all --no-merges
-	
-	co = checkout
-	cf = checkout -b
-	df = branch -d
-	ci = commit -a -m
-	mf = merge --no-ff --no-commit
+    lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+    lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+    leaderboard = shortlog -sn --all --no-merges
+
+    co = checkout
+    cf = checkout -b
+    df = branch -d
+    ci = commit -a -m
+    mf = merge --no-ff --no-commit
     cp = cherry-pick
     cl = clone
     st = status -sb
