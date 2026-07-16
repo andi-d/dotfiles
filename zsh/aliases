@@ -1,3 +1,0 @@
-alias ls='ls -l --color=auto'
-alias lla='ll -a'
-alias gs='git status'

@@ -11,6 +11,7 @@ require("hypr.envs")
 require("hypr.looknfeel")
 require("hypr.input")
 require("hypr.bindings")
+require("hypr.apps")
 
 -----------------------
 ----- PERMISSIONS -----

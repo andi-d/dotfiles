@@ -1,5 +1,13 @@
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 --
+-- local active_border_color = "rgb(f2fcff)"
+local active_border_color = "rgba(8a8588ee)"
+
+-- local active_shadow_color = "rgb(6fb8e3)"
+local inactive_border_color = "rgba(30486099)"
+-- local inactive_shadow_color = "rgba(30486077)"
+
+--
 hl.config({
 	general = {
 		gaps_in = 4,
@@ -26,8 +34,8 @@ hl.config({
 		rounding_power = 2,
 
 		-- Change transparency of focused and unfocused windows
-		active_opacity = 1.0,
-		inactive_opacity = 1.0,
+		active_opacity = 0.98,
+		inactive_opacity = 0.95,
 
 		shadow = {
 			enabled = true,
