@@ -7,6 +7,14 @@ return {
         next = "<M-]>",
         prev = "<M-[>",
       },
+      nes = { enabled = false },
+      cli = {
+        tools = {
+          antigravity = {
+            cmd = { "agy" },
+          },
+        },
+      },
     },
   },
 }
