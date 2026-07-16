@@ -32,17 +32,6 @@
     "tooltip": true,
     "tooltip-format": "btw"
   },
-  // "hyprland/workspaces": {
-  //   "disable-scroll": true,
-  //   "all-outputs": true,
-  //   "warp-on-scroll": false,
-  //   "format": "{name}",
-  //   "format-icons": {
-  //     "urgent": "",
-  //     "active": "",
-  //     "default": ""
-  //   }
-  // },
   "hyprland/workspaces": {
     "on-click": "activate",
     "format": "{icon}",
@@ -157,9 +146,9 @@
     "menu": "on-click",
     "menu-file": "$HOME/.config/waybar/power_menu.xml",
     "menu-actions": {
-      "logout": "hyprctl dispatch exit",
-      "reboot": "systemctl reboot",
-      "shutdown": "systemctl poweroff"
+      "logout": "hyprshutdown",
+      "reboot": "hyprshutdown -t 'Restarting...' --post-cmd 'reboot'",
+      "shutdown": "hyprshutdown -t 'Shutting down...' --post-cmd 'shutdown -P 0'"
     }
   }
 }

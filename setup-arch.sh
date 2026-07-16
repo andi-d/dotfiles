@@ -44,6 +44,8 @@ sudo pacman --noconfirm --needed -S \
   thunar \
   firefox \
   pipewire \
+  hyprshutdown \
+  hyprpicker \
   wireplumber \
   impala \
   openssh \
