@@ -62,8 +62,8 @@ elephant service enable
 systemctl --user start elephant.service
 
 # dev
-
-if ! command_exists nvm; then
+NVM_DIR="$HOME/.config/nvm"
+if [ ! -d "$NVM_DIR" ]; then
   echo "Installing nvm"
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.5/install.sh | bash
 else
@@ -72,6 +72,8 @@ fi
 
 if ! command_exists node; then
   nvm install --lts
+else
+  echo "node already installed"
 fi
 
 # nvim
