@@ -91,6 +91,12 @@ if ! [ -d ~/.config/tmux/plugins/catppuccin ]; then
   git clone -b v2.3.0 https://github.com/catppuccin/tmux.git ~/.config/tmux/plugins/catppuccin/tmux
 fi
 
+if ! command_exists opencode; then
+  npm i -g opencode-ai
+else
+  echo "opencode already installed"
+fi
+
 sudo pacman -S --noconfirm --needed \
   dotnet-sdk
 
