@@ -23,7 +23,8 @@
     // "temperature",
     "hyprland/language",
     "battery",
-    "clock"
+    "clock",
+    "custom/menu"
   ],
   //Modules configuration
   "custom/arch": {
@@ -149,5 +150,16 @@
     "format": "{:%H:%M | %e %B} ",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "format-alt": "{:%Y-%m-%d}"
+  },
+  "custom/menu": {
+    "format": "⏻",
+    "tooltip": false,
+    "menu": "on-click",
+    "menu-file": "$HOME/.config/waybar/power_menu.xml",
+    "menu-actions": {
+      "logout": "hyprctl dispatch exit",
+      "reboot": "systemctl reboot",
+      "shutdown": "systemctl poweroff"
+    }
   }
 }
