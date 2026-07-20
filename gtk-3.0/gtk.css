@@ -1,0 +1,53 @@
+  /* --- Thunar Custom Styling --- */
+
+/* Main window background */
+.thunar {
+    background-color: #1e1e2e;
+    color: #cdd6f4;
+}
+
+/* Sidebar styling */
+.thunar .sidebar {
+    background-color: #181825;
+    border-right: 1px solid #313244;
+}
+
+/* Selected item in sidebar */
+.thunar .sidebar row:selected {
+    background-color: #cba6f7;
+    color: #11111b;
+    border-radius: 8px;
+}
+
+/* Pathbar & Location buttons */
+.thunar .path-bar button {
+    background-color: #313244;
+    color: #cdd6f4;
+    border-radius: 6px;
+    border: none;
+    margin: 2px;
+}
+
+.thunar .path-bar button:hover {
+    background-color: #45475a;
+}
+
+/* Search bar & input fields */
+.thunar entry {
+    background-color: #313244;
+    color: #cdd6f4;
+    border-radius: 8px;
+    border: 1px solid #45475a;
+    padding: 4px 8px;
+}
+
+.thunar entry:focus {
+    border-color: #cba6f7;
+}
+
+/* File view selection */
+.thunar .view:selected {
+    background-color: rgba(203, 166, 247, 0.3);
+    color: #cdd6f4;
+    border-radius: 6px;
+}

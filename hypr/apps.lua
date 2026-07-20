@@ -16,3 +16,10 @@ hl.window_rule({
 	center = true,
 	size = { 900, 700 },
 })
+
+hl.window_rule({
+	name = "thunar-appearance",
+	match = { class = "thunar" },
+
+	opacity = 0.85,
+})

@@ -68,8 +68,14 @@ systemctl --user start elephant.service
 yay -S --noconfirm --needed \
   snappy-switcher
 
+# themeing
+yay -S --noconfirm --needed \
+  catppuccin-gtk-theme-mocha \
+  papirus-icon-theme \
+  nwg-look
+# catppuccin-icon-theme
+
 # useful tools
-#
 if ! command_exists zoxide; then
   echo "Installing zoxide"
   curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
