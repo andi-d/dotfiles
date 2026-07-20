@@ -14,7 +14,7 @@ if ! command_exists yay; then
   git clone https://aur.archlinux.org/yay.git yay-install
   pushd yay-install
   makepkg -si
-  if [ -d yay-install]; then
+  if [ -d yay-install ]; then
     rm -rf yay-install
   fi
 else
@@ -68,6 +68,9 @@ systemctl --user start elephant.service
 if ! command_exists zoxide; then
   echo "Installing zoxide"
   curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+
+  echo 'Add eval "$(zoxide init zsh --cmd cd)" to your .zshrc file'
+
 else
   echo "zoxide already installed"
 fi
