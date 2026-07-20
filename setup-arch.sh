@@ -57,11 +57,16 @@ sudo pacman --noconfirm --needed -S \
 
 # walker application launcher
 yay -S --noconfirm --needed \
-  elephant elephant-providerlist elephant-desktopapplications \
+  elephant \
+  elephant-providerlist \
+  elephant-desktopapplications \
   walker
 # yay -S --noconfirm --needed rofi-wayland
 elephant service enable
 systemctl --user start elephant.service
+
+yay -S --noconfirm --needed \
+  snappy-switcher
 
 # useful tools
 #

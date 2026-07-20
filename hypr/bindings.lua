@@ -37,6 +37,13 @@ for i = 1, 10 do
 	hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
 end
 
+-- Snappy Switcher bindings (requires snappy-switcher)
+-- Alt+Tab (standard MRU)
+hl.bind(mainMod .. " + Tab", hl.dsp.exec_cmd("snappy-switcher next --mod super"))
+
+-- Super+Tab (workspace-filtered)
+hl.bind("ALT + TAB", hl.dsp.exec_cmd("snappy-switcher next --workspace --mod alt"))
+
 -- Example special workspace (scratchpad)
 hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
