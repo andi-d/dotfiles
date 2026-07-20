@@ -6,6 +6,7 @@
   // "height": 42, // Waybar height (to be removed for auto height)
   // "width": 1280, // Waybar width
   "spacing": 4, // Gaps between modules (4px)
+  "margin": "5 6 0 6",
   // Choose the order of the modules
   "modules-left": [
     "custom/arch",
