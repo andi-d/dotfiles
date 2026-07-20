@@ -4,6 +4,7 @@ alias lg='lazygit'
 alias ld='lazydocker'
 alias src="cd ~/src"
 alias k='kubectl'
+alias cd='z'
 # find files with preview
 alias ff='fzf --preview '\''bat --style=numbers --color=always {}'\'''
 # ls replacement
