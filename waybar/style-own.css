@@ -26,6 +26,10 @@ window#waybar {
     padding: 0;
 }
 
+.modules-center {
+    padding: 0;
+}
+
 #clock,
 #battery,
 #cpu,

@@ -3,7 +3,7 @@
 hl.config({
 	input = {
 		-- Use multiple keyboard layouts and switch between them with Left Alt + Right Alt.
-		kb_layout = "gb",
+		kb_layout = "de,gb",
 		-- kb_layout = "de,gb",
 
 		-- Use a specific keyboard variant if needed (e.g. intl for international keyboards).

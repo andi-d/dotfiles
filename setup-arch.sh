@@ -31,6 +31,7 @@ sudo pacman --noconfirm --needed -S \
   waybar \
   kitty \
   tmux \
+  zoxide \
   swaync \
   qt6-wayland \
   hyprpolkitagent \
@@ -63,6 +64,10 @@ yay -S --noconfirm --needed \
 elephant service enable
 systemctl --user start elephant.service
 
+# useful tools
+
+yay -S --noconfirm --needed \
+  localsend
 # dev
 NVM_DIR="$HOME/.config/nvm"
 if [ ! -d "$NVM_DIR" ]; then
