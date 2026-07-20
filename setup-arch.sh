@@ -31,7 +31,6 @@ sudo pacman --noconfirm --needed -S \
   waybar \
   kitty \
   tmux \
-  zoxide \
   swaync \
   qt6-wayland \
   hyprpolkitagent \
@@ -65,6 +64,13 @@ elephant service enable
 systemctl --user start elephant.service
 
 # useful tools
+#
+if ! command_exists zoxide; then
+  echo "Installing zoxide"
+  curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+else
+  echo "zoxide already installed"
+fi
 
 yay -S --noconfirm --needed \
   localsend
