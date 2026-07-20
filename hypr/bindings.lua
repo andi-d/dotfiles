@@ -1,27 +1,33 @@
 local terminal = "kitty"
 local fileManager = "thunar"
-local menu = "rofi-wayland"
 local launcher = "walker"
 
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
-hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
--- hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd("rofi -show drun"))
-hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(launcher))
-local closeWindowBind = hl.bind(mainMod .. " + C", hl.dsp.window.close())
--- closeWindowBind:set_enabled(false)
+hl.bind(mainMod .. " + W", hl.dsp.window.close())
 hl.bind(
-	mainMod .. " + M",
+	mainMod .. " + L",
 	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
 )
-hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
-hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
+hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
+
+-- Snappy Switcher bindings (requires snappy-switcher)
+-- Alt+Tab (standard MRU)
+hl.bind(mainMod .. " + Tab", hl.dsp.exec_cmd("snappy-switcher next --mod super"))
+
+-- Super+Tab (workspace-filtered)
+hl.bind("ALT + TAB", hl.dsp.exec_cmd("snappy-switcher next --workspace --mod alt"))
+
+-- App Bindings
+hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
+hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(launcher))
+hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + A", hl.dsp.exec_cmd('webapp-launch-or-focus "Perplexity AI" "https://perplexity.ai/"'))
 hl.bind(mainMod .. " + SHIFT + A", hl.dsp.exec_cmd('webapp-launch-or-focus "ChatGPT" "https://chatgpt.com/"'))
+hl.bind(mainMod .. " + M", hl.dsp.exec_cmd('webapp-launch-or-focus "Proton Mail" "https://mail.proton.me/"'))
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
@@ -36,13 +42,6 @@ for i = 1, 10 do
 	hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
 	hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
 end
-
--- Snappy Switcher bindings (requires snappy-switcher)
--- Alt+Tab (standard MRU)
-hl.bind(mainMod .. " + Tab", hl.dsp.exec_cmd("snappy-switcher next --mod super"))
-
--- Super+Tab (workspace-filtered)
-hl.bind("ALT + TAB", hl.dsp.exec_cmd("snappy-switcher next --workspace --mod alt"))
 
 -- Example special workspace (scratchpad)
 hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
