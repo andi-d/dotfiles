@@ -1,6 +1,7 @@
 local terminal = "kitty"
 local fileManager = "thunar"
 local launcher = "walker"
+local browser = "brave"
 
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
@@ -25,6 +26,7 @@ hl.bind("ALT + TAB", hl.dsp.exec_cmd("snappy-switcher next --workspace --mod alt
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(launcher))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
+hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + A", hl.dsp.exec_cmd('webapp-launch-or-focus "Perplexity AI" "https://perplexity.ai/"'))
 hl.bind(mainMod .. " + SHIFT + A", hl.dsp.exec_cmd('webapp-launch-or-focus "ChatGPT" "https://chatgpt.com/"'))
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd('webapp-launch-or-focus "Proton Mail" "https://mail.proton.me/"'))
