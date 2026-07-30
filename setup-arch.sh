@@ -49,11 +49,13 @@ sudo pacman --noconfirm --needed -S \
   wireplumber \
   impala \
   openssh \
+  bind \
   wget \
   zsh \
   ttf-jetbrains-mono-nerd \
   otf-font-awesome \
-  unzip
+  unzip \
+  stow
 
 # walker application launcher
 yay -S --noconfirm --needed \
