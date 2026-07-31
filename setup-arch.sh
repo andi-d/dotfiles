@@ -55,6 +55,7 @@ sudo pacman --noconfirm --needed -S \
   ttf-jetbrains-mono-nerd \
   otf-font-awesome \
   unzip \
+  bat \
   stow
 
 # walker application launcher
