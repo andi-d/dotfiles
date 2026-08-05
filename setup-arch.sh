@@ -136,7 +136,7 @@ AUR_PKGS=(
   catppuccin-gtk-theme-mocha papirus-icon-theme nwg-look
 
   # Desktop Apps
-  localsend brave-bin
+  localsend brave-bin spotify
 )
 
 log_info "Installing ${#AUR_PKGS[@]} AUR packages..."
