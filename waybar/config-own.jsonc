@@ -21,6 +21,7 @@
     "idle_inhibitor",
     "pulseaudio",
     "network",
+    "bluetooth",
     "cpu",
     "memory",
     // "temperature",
@@ -103,6 +104,16 @@
     "format-disconnected": "Disconnected ⚠",
     "on-click": "nm-connection-editor"
     // "on-click": "sh ~/scripts/rofi-wifi-menu/rofi-wifi-menu.sh"
+  },
+  "bluetooth": {
+    "format": " {status}",
+    "format-disabled": "󰂲",
+    "format-connected": " {num_connections}",
+    "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "on-click": "kitty --class bluetui -e bluetui"
   },
   "cpu": {
     "format": "  {usage}%",

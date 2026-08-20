@@ -14,6 +14,11 @@ hl.window_rule({
 	tag = "+floating-center",
 })
 
+hl.window_rule({
+	match = { class = "bluetui" },
+	tag = "+floating-center",
+})
+
 -- all floating-center tagged windows are centered and floating
 hl.window_rule({
 	match = { tag = "floating-center" },

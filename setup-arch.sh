@@ -111,7 +111,7 @@ PACMAN_PKGS=(
   qt6-wayland hyprpolkitagent brightnessctl wl-clipboard cliphist
   man-db grim slurp swappy thunar firefox pipewire
   hyprshutdown hyprpicker wireplumber openssh bind wget zsh
-  unzip bat stow imv
+  unzip bat stow imv btop bluetui
 
   # Fonts
   ttf-jetbrains-mono-nerd otf-font-awesome
