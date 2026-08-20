@@ -10,11 +10,12 @@
   // Choose the order of the modules
   "modules-left": [
     "custom/arch",
-    "hyprland/workspaces"
+    "hyprland/workspaces",
+    "custom/divider",
+    "hyprland/window"
   ],
   "modules-center": [
     "clock"
-    // "hyprland/window"
   ],
   "modules-right": [
     "idle_inhibitor",
@@ -26,6 +27,7 @@
     "hyprland/language",
     "battery",
     // "clock",
+    "tray",
     "custom/menu"
   ],
   //Modules configuration
@@ -33,6 +35,9 @@
     "format": "󰣇",
     "tooltip": true,
     "tooltip-format": "btw"
+  },
+  "custom/divider": {
+    "format": "|"
   },
   "hyprland/workspaces": {
     "on-click": "activate",
@@ -96,7 +101,7 @@
     "tooltip-format": "{ifname} via {gwaddr} ",
     "format-linked": "{ifname} (No IP) ",
     "format-disconnected": "Disconnected ⚠",
-    "on-click": "kitty --title Impala -e impala"
+    "on-click": "nm-connection-editor"
     // "on-click": "sh ~/scripts/rofi-wifi-menu/rofi-wifi-menu.sh"
   },
   "cpu": {

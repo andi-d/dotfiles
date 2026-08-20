@@ -9,6 +9,11 @@ hl.window_rule({
 	tag = "+floating-center",
 })
 
+hl.window_rule({
+	match = { title = "^Network Connections$" },
+	tag = "+floating-center",
+})
+
 -- all floating-center tagged windows are centered and floating
 hl.window_rule({
 	match = { tag = "floating-center" },

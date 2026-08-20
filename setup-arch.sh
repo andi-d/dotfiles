@@ -76,7 +76,11 @@ log_banner
 # Keep-alive sudo authentication
 log_info "Requesting sudo authentication..."
 sudo -v
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+while true; do
+  sudo -n true
+  sleep 60
+  kill -0 "$$" || exit
+done 2>/dev/null &
 SUDO_PID=$!
 trap 'kill $SUDO_PID 2>/dev/null || true' EXIT
 
@@ -106,8 +110,8 @@ PACMAN_PKGS=(
   greetd greetd-tuigreet waybar kitty tmux swaync
   qt6-wayland hyprpolkitagent brightnessctl wl-clipboard cliphist
   man-db grim slurp swappy thunar firefox pipewire
-  hyprshutdown hyprpicker wireplumber impala openssh bind wget zsh
-  unzip bat stow
+  hyprshutdown hyprpicker wireplumber openssh bind wget zsh
+  unzip bat stow imv
 
   # Fonts
   ttf-jetbrains-mono-nerd otf-font-awesome
@@ -118,6 +122,9 @@ PACMAN_PKGS=(
 
   # Terminal Utilities & TUI Apps
   lazygit lazydocker yazi eza
+
+  # Networking & VPN Tools
+  iwd impala wireguard-tools network-manager-applet
 )
 
 log_info "Installing ${#PACMAN_PKGS[@]} pacman packages..."
@@ -136,7 +143,7 @@ AUR_PKGS=(
   catppuccin-gtk-theme-mocha papirus-icon-theme nwg-look
 
   # Desktop Apps
-  localsend brave-bin spotify
+  localsend-bin brave-bin spotify wireguard-gui-bin
 )
 
 log_info "Installing ${#AUR_PKGS[@]} AUR packages..."
@@ -221,4 +228,3 @@ echo -e " • Add zoxide to your shell configuration if not present:"
 echo -e "   ${CYAN}echo 'eval \"\$(zoxide init zsh --cmd cd)\"' >> ~/.zshrc${RESET}"
 echo -e " • Restart your shell or log out and back in to apply all changes."
 echo
-
