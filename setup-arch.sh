@@ -111,7 +111,7 @@ PACMAN_PKGS=(
   qt6-wayland hyprpolkitagent brightnessctl wl-clipboard cliphist
   man-db grim slurp swappy thunar firefox pipewire
   hyprshutdown hyprpicker wireplumber openssh bind wget zsh
-  unzip bat stow imv btop bluetui
+  unzip bat stow imv btop bluetui fastfetch udisks2 gvfs
 
   # Fonts
   ttf-jetbrains-mono-nerd otf-font-awesome
@@ -125,6 +125,9 @@ PACMAN_PKGS=(
 
   # Networking & VPN Tools
   iwd impala wireguard-tools network-manager-applet
+
+  # Graphics & Multimedia
+  intel-media-driver libva-utils
 )
 
 log_info "Installing ${#PACMAN_PKGS[@]} pacman packages..."
@@ -161,6 +164,8 @@ if command_exists elephant; then
 else
   log_warn "elephant binary not found. Skipping service enablement."
 fi
+
+sudo systemctl enable --now udisks2
 
 # 5. Shell & Terminal Tools (zoxide, catppuccin tmux)
 log_section "[5/7] Shell & Terminal Tools"
